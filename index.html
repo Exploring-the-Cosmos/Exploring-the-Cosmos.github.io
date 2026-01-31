@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Portfolio | Gravitational Physics & Cosmology</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #1e3a8a;
+            --secondary-color: #3b82f6;
+            --accent-color: #60a5fa;
+            --dark-bg: #0f172a;
+            --light-bg: #f8fafc;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--light-bg);
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--primary-color) 100%);
+            color: white;
+            padding: 2rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.95;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        section {
+            margin-bottom: 5rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--secondary-color);
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Research Areas */
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .research-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 4px solid var(--secondary-color);
+        }
+
+        .research-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .research-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .research-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* Blog Section */
+        .blog-posts {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .blog-post {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .blog-post:hover {
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .blog-meta {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .blog-post h3 {
+            margin-bottom: 1rem;
+            font-size: 1.6rem;
+        }
+
+        .blog-post p {
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .read-more {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.3s ease;
+        }
+
+        .read-more:hover {
+            gap: 1rem;
+        }
+
+        /* Publications */
+        .publication {
+            background: white;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary-color);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .publication h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .publication p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 0.3rem;
+        }
+
+        /* About Section */
+        .about-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            line-height: 1.8;
+            color: var(--text-light);
+        }
+
+        .about-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        /* Contact */
+        .contact-info {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-info p {
+            margin-bottom: 1rem;
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        .contact-info a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-bg);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--dark-bg);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .research-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <nav>
+            <div class="logo">Theoretical Physics Research</div>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <h1>Exploring the Cosmos</h1>
+        <p>Research in Gravitational Physics, Cosmology, and High-Energy Theory</p>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Research Areas -->
+        <section id="research">
+            <h2>Research Areas</h2>
+            <div class="research-grid">
+                <div class="research-card">
+                    <h3>Gravitational Physics</h3>
+                    <p>Investigating the fundamental nature of gravity through general relativity and beyond. Focus areas include black hole physics, gravitational waves, and the geometric structure of spacetime.</p>
+                </div>
+                <div class="research-card">
+                    <h3>Cosmology</h3>
+                    <p>Exploring the evolution and structure of the universe, from the Big Bang to the present day. Research encompasses dark matter, dark energy, inflation, and large-scale structure formation.</p>
+                </div>
+                <div class="research-card">
+                    <h3>High-Energy Theory</h3>
+                    <p>Studying quantum field theory, string theory, and the unification of fundamental forces. Work includes AdS/CFT correspondence, holography, and quantum aspects of gravity.</p>
+                </div>
+                <div class="research-card">
+                    <h3>Quantum Gravity</h3>
+                    <p>Pursuing a consistent quantum description of gravitational phenomena. Research directions include loop quantum gravity, causal dynamical triangulations, and emergent gravity scenarios.</p>
+                </div>
+                <div class="research-card">
+                    <h3>Black Hole Thermodynamics</h3>
+                    <p>Examining the thermodynamic properties of black holes and their information paradox. Investigating Hawking radiation, entropy, and the holographic principle.</p>
+                </div>
+                <div class="research-card">
+                    <h3>Early Universe Physics</h3>
+                    <p>Understanding the physics of the very early universe, including cosmic inflation, reheating, baryogenesis, and the generation of primordial density fluctuations.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Section -->
+        <section id="blog">
+            <h2>Recent Thoughts</h2>
+            <div class="blog-posts">
+                <article class="blog-post">
+                    <div class="blog-meta">
+                        <span>📅 January 25, 2026</span>
+                        <span>🏷️ Gravitational Waves</span>
+                    </div>
+                    <h3>The Symphony of Spacetime: Latest Gravitational Wave Discoveries</h3>
+                    <p>Recent observations from LIGO and Virgo have opened a new window into the universe. The detection of gravitational waves from merging neutron stars has provided unprecedented insights into the nature of dense matter and the origin of heavy elements. This blog post explores the implications of these observations for our understanding of general relativity in the strong-field regime and the connection to multi-messenger astronomy.</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </article>
+
+                <article class="blog-post">
+                    <div class="blog-meta">
+                        <span>📅 January 18, 2026</span>
+                        <span>🏷️ Cosmology</span>
+                    </div>
+                    <h3>Dark Energy and the Fate of the Universe</h3>
+                    <p>The accelerating expansion of the universe remains one of the most profound mysteries in modern physics. Is dark energy a cosmological constant, or does it evolve with time? I discuss recent theoretical models including quintessence, phantom energy, and modified gravity theories, examining how upcoming surveys might distinguish between these scenarios and what they tell us about the ultimate fate of our cosmos.</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </article>
+
+                <article class="blog-post">
+                    <div class="blog-meta">
+                        <span>📅 January 10, 2026</span>
+                        <span>🏷️ Quantum Field Theory</span>
+                    </div>
+                    <h3>Holography and the AdS/CFT Correspondence</h3>
+                    <p>The AdS/CFT correspondence has revolutionized our understanding of quantum gravity and strongly coupled field theories. This duality between gravitational theories in Anti-de Sitter space and conformal field theories on its boundary provides a powerful tool for tackling previously intractable problems. In this post, I explore recent applications to condensed matter physics, quantum information theory, and the nature of spacetime emergence.</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </article>
+
+                <article class="blog-post">
+                    <div class="blog-meta">
+                        <span>📅 December 28, 2025</span>
+                        <span>🏷️ Black Holes</span>
+                    </div>
+                    <h3>Information Paradox: Resolving Hawking's Most Famous Puzzle</h3>
+                    <p>The black hole information paradox has challenged physicists for nearly five decades. Recent developments in understanding black hole microstates, the role of entanglement, and quantum extremal surfaces suggest we may be approaching a resolution. I examine the latest proposals, including the importance of gravitational recoil, replica wormholes, and what they mean for the future of quantum gravity research.</p>
+                    <a href="#" class="read-more">Read More →</a>
+                </article>
+            </div>
+        </section>
+
+        <!-- Publications -->
+        <section id="publications">
+            <h2>Selected Publications</h2>
+            <div class="publication">
+                <h4>Quantum Corrections to Schwarzschild Black Holes in Loop Quantum Gravity</h4>
+                <p><strong>Authors:</strong> [Your Name], Collaborator A, Collaborator B</p>
+                <p><strong>Journal:</strong> Physical Review D (2025)</p>
+                <p>We compute quantum corrections to the Schwarzschild metric using loop quantum gravity techniques, revealing a modified horizon structure that resolves the classical singularity.</p>
+            </div>
+            <div class="publication">
+                <h4>Primordial Non-Gaussianity from Multi-Field Inflation</h4>
+                <p><strong>Authors:</strong> [Your Name], Collaborator C</p>
+                <p><strong>Journal:</strong> Journal of Cosmology and Astroparticle Physics (2024)</p>
+                <p>We develop a framework for calculating non-Gaussian signatures in the cosmic microwave background arising from multi-field inflationary models and compare predictions with Planck data.</p>
+            </div>
+            <div class="publication">
+                <h4>Holographic Entanglement Entropy in Time-Dependent Geometries</h4>
+                <p><strong>Authors:</strong> [Your Name], Collaborator D, Collaborator E</p>
+                <p><strong>Journal:</strong> Journal of High Energy Physics (2024)</p>
+                <p>Using holographic techniques, we study the evolution of entanglement entropy in time-dependent AdS spacetimes, with applications to thermalization and black hole formation.</p>
+            </div>
+            <div class="publication">
+                <h4>Gravitational Wave Signatures from Phase Transitions in the Early Universe</h4>
+                <p><strong>Authors:</strong> [Your Name], Collaborator F</p>
+                <p><strong>Journal:</strong> Physical Review Letters (2023)</p>
+                <p>We analyze the stochastic gravitational wave background produced by first-order phase transitions and discuss detectability prospects for future space-based interferometers.</p>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about">
+            <h2>About</h2>
+            <div class="about-content">
+                <p>I am a theoretical physicist working at the intersection of gravitational physics, cosmology, and high-energy theory. My research seeks to understand the fundamental nature of spacetime, the quantum properties of gravity, and the evolution of our universe.</p>
+                
+                <p>My work combines analytical techniques from general relativity and quantum field theory with computational methods to explore phenomena ranging from black hole dynamics to the large-scale structure of the cosmos. I am particularly interested in connecting theoretical predictions with observational data from gravitational wave detectors, cosmic microwave background experiments, and large-scale surveys.</p>
+                
+                <p>I received my Ph.D. in Theoretical Physics and have held research positions at leading institutions worldwide. I am committed to advancing our understanding of the universe while mentoring the next generation of physicists and making cutting-edge research accessible to broader audiences.</p>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact">
+            <h2>Contact</h2>
+            <div class="contact-info">
+                <p><strong>Email:</strong> <a href="mailto:research@example.edu">research@example.edu</a></p>
+                <p><strong>Institution:</strong> Department of Physics, University Name</p>
+                <p><strong>Office:</strong> Building Name, Room 123</p>
+                <p><strong>arXiv:</strong> <a href="https://arxiv.org/" target="_blank">arxiv.org/find/researcher</a></p>
+                <p><strong>ORCID:</strong> <a href="https://orcid.org/" target="_blank">0000-0000-0000-0000</a></p>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Theoretical Physics Research. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu after clicking
+                    document.getElementById('navLinks').classList.remove('active');
+                }
+            });
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15)';
+            } else {
+                header.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+            }
+        });
+    </script>
+</body>
+</html>
